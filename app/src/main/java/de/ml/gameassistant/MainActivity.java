@@ -7,11 +7,7 @@ import android.widget.ImageButton;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorManager;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.TextView;
 import android.hardware.SensorEventListener;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener{
@@ -20,7 +16,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private SensorManager sm_acc;
     private Sensor acc;
 
-    private long then = 0;
     private long then2 = 0;
 
     private int counter = 0;
@@ -33,7 +28,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         sm_acc = (SensorManager) getSystemService(SENSOR_SERVICE);
         acc = sm_acc.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
-
         button1 = findViewById(R.id.button1);
         button2 = findViewById(R.id.button2);
         button3 = findViewById(R.id.button3);
@@ -43,11 +37,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         button2.setVisibility(View.GONE);
         button3.setVisibility(View.GONE);
         button4.setVisibility(View.GONE);
-
-
-
-
-
     }
 
     protected void onResume() {
@@ -92,19 +81,14 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 then2 = now;
 
             }
-
-
-
-            //Falls Sensor s Daten vom Abstandssensor enthält wird zum Tutorial zurückgeblättert (Seite 0) und es wird in einer Textview angezeigt,
-            //ob der Sensor bedeckt oder nicth bedeckt ist.
         }
 
     }
 
 
     public void aktualisieren() {
-        if (counter > 4) {counter = 1;}
-        if (counter < 1) {counter = 4;}
+        if (counter > 4) {counter = 1;} //"5. Seite" --> 1. Seite
+        if (counter < 1) {counter = 4;} //"0. Seite" --> 4. Seite
 
         button1.setVisibility(View.GONE);
         button2.setVisibility(View.GONE);
@@ -128,6 +112,20 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 break;
         }
 
+    }
+
+    public void wuerfeln(View view) {
+        startActivity(new Intent(MainActivity.this, Wuerfeln.class));
+    }
+
+    public void losen(View view) {
+    }
+
+    public void rechner(View view) {
+    }
+
+    public void stadtlandfluss(View view) {
+        startActivity(new Intent(MainActivity.this, StadtLandFluss.class));
     }
 }
 
