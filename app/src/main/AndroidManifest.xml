@@ -16,7 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Wuerfeln"></activity>
+        <activity android:name=".Wuerfeln" />
+        <activity android:name=".StadtLandFluss" />
+        <activity android:name=".NamenLosen"></activity>
     </application>
 
 </manifest>

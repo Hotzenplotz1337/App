@@ -119,6 +119,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
     public void losen(View view) {
+        startActivity(new Intent(MainActivity.this, NamenLosen.class));
     }
 
     public void rechner(View view) {
