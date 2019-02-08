@@ -123,6 +123,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
     public void rechner(View view) {
+        startActivity(new Intent(MainActivity.this, Rechner.class));
     }
 
     public void stadtlandfluss(View view) {

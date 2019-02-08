@@ -59,7 +59,7 @@ public class StadtLandFluss extends AppCompatActivity {
         }
 
         anzeige.setText(buchstabe);
-        //anzeige.setText(Integer.toString(n));
+        //eingabe.setText(Integer.toString(n));
 
     }
 }

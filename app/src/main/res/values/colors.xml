@@ -3,4 +3,8 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="calc1">#999999</color>
+    <color name="calc2">#707070</color>
+    <color name="calc3">#505050</color>
+    <color name="calc4">#FFFFFF</color>
 </resources>
