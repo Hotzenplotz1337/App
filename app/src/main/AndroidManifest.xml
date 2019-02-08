@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Rechner"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,7 +19,7 @@
         </activity>
         <activity android:name=".Wuerfeln" />
         <activity android:name=".StadtLandFluss" />
-        <activity android:name=".NamenLosen"></activity>
+        <activity android:name=".NamenLosen" />
     </application>
 
 </manifest>

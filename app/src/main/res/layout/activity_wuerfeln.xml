@@ -11,9 +11,10 @@
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:layout_marginStart="141dp"
-        android:layout_marginTop="161dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="140dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/w1" />
@@ -24,11 +25,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="162dp"
         android:layout_marginEnd="160dp"
-        android:layout_marginBottom="94dp"
+        android:layout_marginBottom="100dp"
         android:onClick="wuerfeln1"
         android:text="1 Würfel"
         app:layout_constraintBottom_toTopOf="@+id/ergebnisview"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
@@ -36,9 +38,10 @@
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:layout_marginStart="141dp"
-        android:layout_marginTop="161dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="140dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/w2" />
@@ -49,11 +52,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="162dp"
         android:layout_marginEnd="160dp"
-        android:layout_marginBottom="94dp"
+        android:layout_marginBottom="100dp"
         android:onClick="wuerfeln2"
         android:text="2 Würfel"
         app:layout_constraintBottom_toTopOf="@+id/ergebnisview"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
@@ -61,9 +65,10 @@
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:layout_marginStart="141dp"
-        android:layout_marginTop="161dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="140dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/w3" />
@@ -74,11 +79,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="162dp"
         android:layout_marginEnd="160dp"
-        android:layout_marginBottom="94dp"
+        android:layout_marginBottom="100dp"
         android:onClick="wuerfeln3"
         android:text="3 Würfel"
         app:layout_constraintBottom_toTopOf="@+id/ergebnisview"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
@@ -86,9 +92,10 @@
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:layout_marginStart="141dp"
-        android:layout_marginTop="161dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="140dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/w4" />
@@ -99,11 +106,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="162dp"
         android:layout_marginEnd="160dp"
-        android:layout_marginBottom="94dp"
+        android:layout_marginBottom="100dp"
         android:onClick="wuerfeln4"
         android:text="4 Würfel"
         app:layout_constraintBottom_toTopOf="@+id/ergebnisview"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
@@ -111,9 +119,10 @@
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:layout_marginStart="141dp"
-        android:layout_marginTop="161dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="140dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/w5" />
@@ -124,11 +133,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="162dp"
         android:layout_marginEnd="160dp"
-        android:layout_marginBottom="94dp"
+        android:layout_marginBottom="100dp"
         android:onClick="wuerfeln5"
         android:text="5 Würfel"
         app:layout_constraintBottom_toTopOf="@+id/ergebnisview"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -137,12 +147,13 @@
         android:layout_height="85dp"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
-        android:layout_marginBottom="161dp"
+        android:layout_marginBottom="100dp"
         android:text=""
         android:textAlignment="center"
         android:textSize="70sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
