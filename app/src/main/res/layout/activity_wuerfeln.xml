@@ -6,42 +6,143 @@
     android:layout_height="match_parent"
     tools:context=".Wuerfeln">
 
-    <TextView
-        android:id="@+id/ergebnisview"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginEnd="72dp"
-        android:layout_marginBottom="15dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/wuerfel" />
-
     <ImageView
-        android:id="@+id/wuerfel"
+        android:id="@+id/wuerfel1"
         android:layout_width="130dp"
         android:layout_height="130dp"
+        android:layout_marginStart="141dp"
         android:layout_marginTop="161dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/ergebnisview"
+        android:layout_marginEnd="140dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.39999998"
         app:srcCompat="@drawable/w1" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="201dp"
+        android:layout_marginStart="162dp"
+        android:layout_marginEnd="160dp"
+        android:layout_marginBottom="94dp"
+        android:onClick="wuerfeln1"
+        android:text="1 Würfel"
+        app:layout_constraintBottom_toTopOf="@+id/ergebnisview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/wuerfel2"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="141dp"
+        android:layout_marginTop="161dp"
+        android:layout_marginEnd="140dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/w2" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="162dp"
+        android:layout_marginEnd="160dp"
+        android:layout_marginBottom="94dp"
+        android:onClick="wuerfeln2"
+        android:text="2 Würfel"
+        app:layout_constraintBottom_toTopOf="@+id/ergebnisview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/wuerfel3"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="141dp"
+        android:layout_marginTop="161dp"
+        android:layout_marginEnd="140dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/w3" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="162dp"
+        android:layout_marginEnd="160dp"
+        android:layout_marginBottom="94dp"
+        android:onClick="wuerfeln3"
+        android:text="3 Würfel"
+        app:layout_constraintBottom_toTopOf="@+id/ergebnisview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/wuerfel4"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="141dp"
+        android:layout_marginTop="161dp"
+        android:layout_marginEnd="140dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/w4" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="162dp"
+        android:layout_marginEnd="160dp"
+        android:layout_marginBottom="94dp"
+        android:onClick="wuerfeln4"
+        android:text="4 Würfel"
+        app:layout_constraintBottom_toTopOf="@+id/ergebnisview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/wuerfel5"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="141dp"
+        android:layout_marginTop="161dp"
+        android:layout_marginEnd="140dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/w5" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="162dp"
+        android:layout_marginEnd="160dp"
+        android:layout_marginBottom="94dp"
         android:onClick="wuerfeln5"
-        android:text="Button"
+        android:text="5 Würfel"
+        app:layout_constraintBottom_toTopOf="@+id/ergebnisview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/ergebnisview"
+        android:layout_width="387dp"
+        android:layout_height="85dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="161dp"
+        android:text=""
+        android:textAlignment="center"
+        android:textSize="70sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/ergebnisview"
-        app:layout_constraintStart_toStartOf="@+id/ergebnisview"
-        app:layout_constraintTop_toBottomOf="@+id/ergebnisview" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
