@@ -1,5 +1,6 @@
 package de.ml.gameassistant;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -33,6 +35,7 @@ public class NamenLosen extends AppCompatActivity implements SensorEventListener
         et7 = findViewById(R.id.et7);
 
         tv = findViewById(R.id.tv);
+        tv.setText("---");
 
         sm_prox = (SensorManager) getSystemService(SENSOR_SERVICE);
         prox = sm_prox.getDefaultSensor(Sensor.TYPE_PROXIMITY);
@@ -111,7 +114,12 @@ public class NamenLosen extends AppCompatActivity implements SensorEventListener
                 default: break;
             }
         } else {
-            tv.setText("Min. 2 Namen");
+            Context context = getApplicationContext();
+            CharSequence text = "Bitte mindestens zwei Namen eingeben";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+            //tv.setText("Min. 2 Namen");
         }
 
 
@@ -128,5 +136,13 @@ public class NamenLosen extends AppCompatActivity implements SensorEventListener
         et5.setText("");
         et6.setText("");
         et7.setText("");
+
+        tv.setText("---");
+
+        Context context = getApplicationContext();
+        CharSequence text = "Namen wurden gelöscht";
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
     }
 }
