@@ -1,5 +1,6 @@
 package de.ml.gameassistant;
 
+import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -12,6 +13,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.Random;
 
 public class Wuerfeln extends AppCompatActivity implements SensorEventListener {
@@ -19,10 +22,11 @@ public class Wuerfeln extends AppCompatActivity implements SensorEventListener {
     private TextView ergebnis;
     private ImageView wuerfel1, wuerfel2, wuerfel3, wuerfel4, wuerfel5;
     private Button button1, button2, button3, button4, button5;
-    private SensorManager sm_acc;
-    private Sensor acc;
+    private SensorManager sm_acc, sm_prox;
+    private Sensor acc, prox;
     private long then2 = 0;
     private int counter = 0;
+    private int dicecounter = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,8 @@ public class Wuerfeln extends AppCompatActivity implements SensorEventListener {
 
         sm_acc = (SensorManager) getSystemService(SENSOR_SERVICE);
         acc = sm_acc.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        sm_prox = (SensorManager) getSystemService(SENSOR_SERVICE);
+        prox = sm_prox.getDefaultSensor(Sensor.TYPE_PROXIMITY);
 
         ergebnis = findViewById(R.id.ergebnisview);
 
@@ -63,12 +69,14 @@ public class Wuerfeln extends AppCompatActivity implements SensorEventListener {
         super.onResume();
         //Sensor-Listener werden gestartet (aktiv, wenn App aktiv ist)
         sm_acc.registerListener(this, acc, SensorManager.SENSOR_DELAY_NORMAL);
+        sm_prox.registerListener(this, prox, SensorManager.SENSOR_DELAY_UI);
     }
 
     protected void onPause() {
         super.onPause();
         //Sensor-Listener werden gestoppt (wenn App geschlossen oder pausiert wird)
         sm_acc.unregisterListener(this);
+        sm_prox.unregisterListener(this);
     }
 
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
@@ -94,11 +102,29 @@ public class Wuerfeln extends AppCompatActivity implements SensorEventListener {
             }
 
             //Falls der X-Wert höher als 6 ist und mehr als 1 Sekunde vergangen ist, wird zurückgeblättert.
-            if((x > 6 ) && (now - then2) > 1000) {
+            else if((x > 6 ) && (now - then2) > 1000) {
                 counter--;
                 wechsel();
                 then2 = now;
             }
+        }
+
+        if (s.getType() == Sensor.TYPE_PROXIMITY) {
+            float dist = event.values[0];
+            if (dist == 0.0) {
+                switch (dicecounter) {
+                    case 1: wuerfeln1(null);
+
+                        break;
+                    case 2: wuerfeln2(null); break;
+                    case 3: wuerfeln3(null); break;
+                    case 4: wuerfeln4(null); break;
+                    case 5: wuerfeln5(null); break;
+                    default: break;
+                }
+            }
+
+
         }
     }
 
@@ -121,22 +147,29 @@ public class Wuerfeln extends AppCompatActivity implements SensorEventListener {
         switch (counter) {
             case 1: button1.setVisibility(View.VISIBLE);
                 wuerfel1.setVisibility(View.VISIBLE);
+                dicecounter = 1;
                 break;
             case 2: button2.setVisibility(View.VISIBLE);
                 wuerfel2.setVisibility(View.VISIBLE);
+                dicecounter = 2;
                 break;
             case 3: button3.setVisibility(View.VISIBLE);
                 wuerfel3.setVisibility(View.VISIBLE);
+                dicecounter = 3;
                 break;
             case 4: button4.setVisibility(View.VISIBLE);
                 wuerfel4.setVisibility(View.VISIBLE);
+                dicecounter = 4;
                 break;
             case 5: button5.setVisibility(View.VISIBLE);
                 wuerfel5.setVisibility(View.VISIBLE);
+                dicecounter = 5;
                 break;
             default: break;
         }
     }
+
+
 
     public void wuerfeln1(View view){
         Random rand = new Random();
