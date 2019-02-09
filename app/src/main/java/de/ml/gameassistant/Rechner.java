@@ -97,7 +97,7 @@ public class Rechner extends AppCompatActivity {
     }
 
     private void Rechne(){
-        if(!Double.isNaN(zahl1) && counter == 1) {
+        if(!Double.isNaN(zahl1)) {
             if(AKTUELLE_OPERATION == ADDITION) {
                 zahl2 = Double.parseDouble(eingabe.getText().toString());
                 zahl1 += zahl2;
