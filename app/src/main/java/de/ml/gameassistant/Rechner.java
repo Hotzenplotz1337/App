@@ -14,12 +14,14 @@ public class Rechner extends AppCompatActivity {
     private Button b1, b2, b3, b4, b5, b6, b7, b8, b9, b0, bPlus, bMinus, bMal, bGeteilt, bKomma, bGleich;
     private TextView anzeige;
     private EditText eingabe;
+    private int counter;
 
     private double zahl1 = Double.NaN, zahl2;
     private static final char ADDITION = '+';
     private static final char SUBTRAKTION = '-';
     private static final char MULTIPLIKATION = '*';
     private static final char DIVISION = '/';
+    private static final char GLEICH = '=';
 
     private char AKTUELLE_OPERATION;
 
@@ -95,16 +97,23 @@ public class Rechner extends AppCompatActivity {
     }
 
     private void Rechne(){
-        if(!Double.isNaN(zahl1)) {
-            zahl2 = Double.parseDouble(eingabe.getText().toString());
-            if(AKTUELLE_OPERATION == ADDITION)
-                zahl1 = this.zahl1 + zahl2;
-            else if(AKTUELLE_OPERATION == SUBTRAKTION)
-                zahl1 = this.zahl1 - zahl2;
-            else if(AKTUELLE_OPERATION == MULTIPLIKATION)
-                zahl1 = this.zahl1 * zahl2;
-            else if(AKTUELLE_OPERATION == DIVISION)
-                zahl1 = this.zahl1 / zahl2;
+        if(!Double.isNaN(zahl1) && counter == 1) {
+            if(AKTUELLE_OPERATION == ADDITION) {
+                zahl2 = Double.parseDouble(eingabe.getText().toString());
+                zahl1 += zahl2;
+            }
+            else if(AKTUELLE_OPERATION == SUBTRAKTION) {
+                zahl2 = Double.parseDouble(eingabe.getText().toString());
+                zahl1 -= zahl2;
+            }
+            else if(AKTUELLE_OPERATION == MULTIPLIKATION){
+                zahl2 = Double.parseDouble(eingabe.getText().toString());
+                zahl1 *= zahl2;
+            }
+            else if(AKTUELLE_OPERATION == DIVISION) {
+                zahl2 = Double.parseDouble(eingabe.getText().toString());
+                zahl1 /= zahl2;
+            }
         }
         else {
             try {
@@ -112,13 +121,14 @@ public class Rechner extends AppCompatActivity {
             }
             catch (Exception e){}
         }
+        eingabe.setText(null);
+
     }
 
     public void pressPlus(View view) {
         AKTUELLE_OPERATION = ADDITION;
         Rechne();
         anzeige.setText(decimalFormat.format(zahl1));
-        eingabe.setText(null);
     }
 
 
@@ -126,27 +136,25 @@ public class Rechner extends AppCompatActivity {
         AKTUELLE_OPERATION = SUBTRAKTION;
         Rechne();
         anzeige.setText(decimalFormat.format(zahl1));
-        eingabe.setText(null);
     }
 
     public void pressMal(View view) {
         AKTUELLE_OPERATION = MULTIPLIKATION;
         Rechne();
         anzeige.setText(decimalFormat.format(zahl1));
-        eingabe.setText(null);
     }
 
     public void pressGeteilt(View view) {
         AKTUELLE_OPERATION = DIVISION;
         Rechne();
         anzeige.setText(decimalFormat.format(zahl1));
-        eingabe.setText(null);
     }
 
     public void pressGleich(View view) {
         Rechne();
         anzeige.setText(decimalFormat.format(zahl1));
-        eingabe.setText(null);
+        eingabe.setText(decimalFormat.format(zahl1));
+        zahl1 = Double.NaN;
         AKTUELLE_OPERATION = '0';
     }
 
