@@ -2,13 +2,13 @@
 <resources>
     <color name="colorPrimary">#28536B</color>
     <color name="colorPrimaryDark">#193849</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#c2948a</color>
     <color name="calc1">#999999</color>
     <color name="calc2">#707070</color>
     <color name="calc3">#505050</color>
     <color name="calc4">#FFFFFF</color>
-    <color name="col1">#28536B</color>
-    <color name="col2">#C2948A</color>
+    <color name="col1">#28536b</color>
+    <color name="col2">#c2948a</color>
     <color name="col3">#7EA8BE</color>
     <color name="col4">#F6F0ED</color>
     <color name="col5">#BBB193</color>

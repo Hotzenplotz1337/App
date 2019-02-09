@@ -56,12 +56,6 @@ public class StadtLandFluss extends AppCompatActivity implements SensorEventList
          if (s.getType() == Sensor.TYPE_PROXIMITY) {
             float dist = event.values[0];
             if (dist == 0.0) {
-                Context context = getApplicationContext();
-                CharSequence text = "Hello toast!";
-                int duration = Toast.LENGTH_SHORT;
-
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
                 drehen(null);
             }
 

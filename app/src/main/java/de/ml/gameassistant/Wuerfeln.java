@@ -33,6 +33,13 @@ public class Wuerfeln extends AppCompatActivity implements SensorEventListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wuerfeln);
 
+        Context context = getApplicationContext();
+        CharSequence text = "Zum Navigieren Smartphone nach rechts oder links neigen";
+        int duration = Toast.LENGTH_LONG;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+
         sm_acc = (SensorManager) getSystemService(SENSOR_SERVICE);
         acc = sm_acc.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         sm_prox = (SensorManager) getSystemService(SENSOR_SERVICE);

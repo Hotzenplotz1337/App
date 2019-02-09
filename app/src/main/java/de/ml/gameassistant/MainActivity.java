@@ -1,5 +1,6 @@
 package de.ml.gameassistant;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorManager;
 import android.view.View;
 import android.hardware.SensorEventListener;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener{
 
@@ -37,6 +39,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         button2.setVisibility(View.GONE);
         button3.setVisibility(View.GONE);
         button4.setVisibility(View.GONE);
+
+        Context context = getApplicationContext();
+        CharSequence text = "Zum Navigieren Smartphone nach rechts oder links neigen";
+        int duration = Toast.LENGTH_LONG;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
     }
 
     protected void onResume() {
