@@ -1,6 +1,5 @@
 package de.ml.gameassistant;
 
-import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -9,13 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.Random;
+import java.util.Random; //Import für Zufallszahl
 
 public class StadtLandFluss extends AppCompatActivity implements SensorEventListener {
 
+    //Textview für ausgelosten Buchstaben
     private TextView anzeige;
+    //Sensor und Sensormanager für den Abstandssensor
     private SensorManager sm_prox;
     private Sensor prox;
 
@@ -24,6 +23,7 @@ public class StadtLandFluss extends AppCompatActivity implements SensorEventList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stadt_land_fluss);
 
+        //IDs werden zugeordnet
         anzeige = findViewById(R.id.textView);
 
         sm_prox = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -42,6 +42,7 @@ public class StadtLandFluss extends AppCompatActivity implements SensorEventList
         sm_prox.unregisterListener(this);
     }
 
+    //Der Vollständigkeit halber
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
     }
 
@@ -49,29 +50,24 @@ public class StadtLandFluss extends AppCompatActivity implements SensorEventList
     public void onSensorChanged(SensorEvent event) {
         //Sensor s erhält die Sensodaten als Array-List
         Sensor s = event.sensor;
-        //Falls Sensor s Daten vom Accelerometer enthält:
-
-            //Falls Sensor s Daten vom Abstandssensor enthält wird zum Tutorial zurückgeblättert (Seite 0) und es wird in einer Textview angezeigt,
-            //ob der Sensor bedeckt oder nicth bedeckt ist.
+        //Falls Sensor s Daten vom Abstandssensor enthält...
          if (s.getType() == Sensor.TYPE_PROXIMITY) {
             float dist = event.values[0];
             if (dist == 0.0) {
+                //falls Distanz == 0 (jemand hält die Hand über den Sensor)
+                //wird drehen() ausgeführt
                 drehen(null);
             }
-
-
         }
-
     }
 
     public void drehen(View view) {
+        //Es gibt 26 buchstaben, also wird Zufallszahl zwischen 1 und 26 generiert
         Random rand = new Random();
-
         int n = rand.nextInt(26) + 1;
-        //50 is the maximum and the 1 is our minimum.
-
         String buchstabe = "";
 
+        //Jeder Buchstabe wird einer Zahl zugeordnet
         switch (n) {
             case 1:  buchstabe = "A"; break;
             case 2:  buchstabe = "B"; break;
@@ -101,7 +97,7 @@ public class StadtLandFluss extends AppCompatActivity implements SensorEventList
             case 26:  buchstabe = "Z"; break;
             default: break;
         }
-
+        //Zahl wird ausgegeben
         anzeige.setText(buchstabe);
     }
 }
