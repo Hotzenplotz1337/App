@@ -1,3 +1,40 @@
 <resources>
     <string name="app_name">GameAssistant</string>
+
+    <!-- Taschenrechner Activity -->
+
+    <string name="r1">1</string>
+    <string name="r2">2</string>
+    <string name="r3">3</string>
+    <string name="r4">+</string>
+    <string name="r5">4</string>
+    <string name="r6">5</string>
+    <string name="r7">6</string>
+    <string name="r8">-</string>
+    <string name="r9">7</string>
+    <string name="r10">8</string>
+    <string name="r11">9</string>
+    <string name="r12">*</string>
+    <string name="r13">.</string>
+    <string name="r14">0</string>
+    <string name="r15">=</string>
+    <string name="r16">/</string>
+
+    <!-- Stadt, Land, Fluss -->
+
+    <string name="s1">Buchstabe losen</string>
+
+    <!-- Würfeln -->
+
+    <string name="w1">1 Würfel</string>
+    <string name="w2">2 Würfel</string>
+    <string name="w3">3 Würfel</string>
+    <string name="w4">4 Würfel</string>
+    <string name="w5">5 Würfel</string>
+
+    <!-- Losen -->
+
+    <string name="l1">Name</string>
+    <string name="l2">Namen auslosen</string>
+
 </resources>

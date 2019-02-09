@@ -18,7 +18,7 @@
         android:layout_marginBottom="16dp"
         android:background="@color/col2"
         android:onClick="drehen"
-        android:text="Buchstabe losen"
+        android:text="@string/s1"
         android:textColor="@color/col4"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"

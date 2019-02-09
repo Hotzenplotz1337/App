@@ -14,14 +14,12 @@ public class Rechner extends AppCompatActivity {
     private Button b1, b2, b3, b4, b5, b6, b7, b8, b9, b0, bPlus, bMinus, bMal, bGeteilt, bKomma, bGleich;
     private TextView anzeige;
     private EditText eingabe;
-    private int counter;
 
     private double zahl1 = Double.NaN, zahl2;
     private static final char ADDITION = '+';
     private static final char SUBTRAKTION = '-';
     private static final char MULTIPLIKATION = '*';
     private static final char DIVISION = '/';
-    private static final char GLEICH = '=';
 
     private char AKTUELLE_OPERATION;
 
@@ -52,6 +50,7 @@ public class Rechner extends AppCompatActivity {
         eingabe = findViewById(R.id.eingabe);
     }
 
+    //
     public void press1(View view){
         eingabe.setText(eingabe.getText() + "1");
     }
@@ -95,6 +94,7 @@ public class Rechner extends AppCompatActivity {
     public void pressKomma(View view){
         eingabe.setText(eingabe.getText() + ".");
     }
+
 
     private void Rechne(){
         if(!Double.isNaN(zahl1)) {

@@ -35,6 +35,8 @@
             android:visibility="visible"
             tools:textSize="18sp" />
 
+        <!-- Taschenrechner Tastatur -->
+
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -57,7 +59,7 @@
                 android:layout_gravity="fill"
                 android:background="@color/col3"
                 android:onClick="press1"
-                android:text="1"
+                android:text="@string/r1"
                 android:textColor="@color/calc4"
                 android:textSize="24sp" />
 
@@ -72,7 +74,7 @@
                 android:layout_gravity="fill"
                 android:background="@color/col3"
                 android:onClick="press2"
-                android:text="2"
+                android:text="@string/r2"
                 android:textColor="@color/calc4"
                 android:textSize="24sp" />
 
@@ -87,7 +89,7 @@
                 android:layout_gravity="fill"
                 android:background="@color/col3"
                 android:onClick="press3"
-                android:text="3"
+                android:text="@string/r3"
                 android:textColor="@color/calc4"
                 android:textSize="24sp" />
 
@@ -102,7 +104,7 @@
                 android:layout_gravity="fill"
                 android:background="@color/col1"
                 android:onClick="pressPlus"
-                android:text="+"
+                android:text="@string/r4"
                 android:textColor="@color/calc4"
                 android:textSize="24sp" />
 
@@ -119,7 +121,7 @@
                 android:layout_gravity="fill"
                 android:background="@color/col3"
                 android:onClick="press4"
-                android:text="4"
+                android:text="@string/r5"
                 android:textColor="@color/calc4"
                 android:textSize="24sp" />
 
@@ -134,7 +136,7 @@
                 android:layout_gravity="fill"
                 android:background="@color/col3"
                 android:onClick="press5"
-                android:text="5"
+                android:text="@string/r6"
                 android:textColor="@color/calc4"
                 android:textSize="24sp" />
 
@@ -149,7 +151,7 @@
                 android:layout_gravity="fill"
                 android:background="@color/col3"
                 android:onClick="press6"
-                android:text="6"
+                android:text="@string/r7"
                 android:textColor="@color/calc4"
                 android:textSize="24sp" />
 
@@ -164,7 +166,7 @@
                 android:layout_gravity="fill"
                 android:background="@color/col1"
                 android:onClick="pressMinus"
-                android:text="-"
+                android:text="@string/r8"
                 android:textColor="@color/calc4"
                 android:textSize="24sp" />
 
@@ -181,7 +183,7 @@
                 android:layout_gravity="fill"
                 android:background="@color/col3"
                 android:onClick="press7"
-                android:text="7"
+                android:text="@string/r9"
                 android:textColor="@color/calc4"
                 android:textSize="24sp" />
 
@@ -196,7 +198,7 @@
                 android:layout_gravity="fill"
                 android:background="@color/col3"
                 android:onClick="press8"
-                android:text="8"
+                android:text="@string/r10"
                 android:textColor="@color/calc4"
                 android:textSize="24sp" />
 
@@ -211,7 +213,7 @@
                 android:layout_gravity="fill"
                 android:background="@color/col3"
                 android:onClick="press9"
-                android:text="9"
+                android:text="@string/r11"
                 android:textColor="@color/calc4"
                 android:textSize="24sp" />
 
@@ -226,7 +228,7 @@
                 android:layout_gravity="fill"
                 android:background="@color/col1"
                 android:onClick="pressMal"
-                android:text="*"
+                android:text="@string/r12"
                 android:textColor="@color/calc4"
                 android:textSize="24sp" />
 
@@ -243,7 +245,7 @@
                 android:layout_gravity="fill"
                 android:background="@color/col2"
                 android:onClick="pressKomma"
-                android:text="."
+                android:text="@string/r13"
                 android:textColor="@color/calc4"
                 android:textSize="24sp" />
 
@@ -258,7 +260,7 @@
                 android:layout_gravity="fill"
                 android:background="@color/col3"
                 android:onClick="press0"
-                android:text="0"
+                android:text="@string/r14"
                 android:textColor="@color/calc4"
                 android:textSize="24sp" />
 
@@ -273,7 +275,7 @@
                 android:layout_gravity="fill"
                 android:background="@color/col2"
                 android:onClick="pressGleich"
-                android:text="="
+                android:text="@string/r15"
                 android:textColor="@color/calc4"
                 android:textSize="24sp" />
 
@@ -288,7 +290,7 @@
                 android:layout_gravity="fill"
                 android:background="@color/col1"
                 android:onClick="pressGeteilt"
-                android:text="/"
+                android:text="@string/r16"
                 android:textColor="@color/calc4"
                 android:textSize="24sp" />
 
