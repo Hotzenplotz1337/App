@@ -37,6 +37,7 @@ public class NamenLosen extends AppCompatActivity implements SensorEventListener
         tv = findViewById(R.id.tv);
         tv.setText("---");
 
+
         sm_prox = (SensorManager) getSystemService(SENSOR_SERVICE);
         prox = sm_prox.getDefaultSensor(Sensor.TYPE_PROXIMITY);
 
