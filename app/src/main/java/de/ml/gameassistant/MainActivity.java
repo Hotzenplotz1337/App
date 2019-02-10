@@ -118,20 +118,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         //Hier wird, abhängig vom Counter, jeweils der richtige Button auf visible gesetzt
         switch (counter) {
-            case 1:
-                button1.setVisibility(View.VISIBLE);
-                break;
-            case 2:
-                button2.setVisibility(View.VISIBLE);
-                break;
-            case 3:
-                button3.setVisibility(View.VISIBLE);
-                break;
-            case 4:
-                button4.setVisibility(View.VISIBLE);
-                break;
-            default:
-                break;
+            case 1: button1.setVisibility(View.VISIBLE);break;
+            case 2: button2.setVisibility(View.VISIBLE);break;
+            case 3: button3.setVisibility(View.VISIBLE);break;
+            case 4: button4.setVisibility(View.VISIBLE);break;
+            default: break;
         }
     }
 

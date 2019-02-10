@@ -19,9 +19,21 @@ import java.util.Random;
 
 public class Wuerfeln extends AppCompatActivity implements SensorEventListener {
 
+    // In der TextView wird das zufallsgenrierte Würfelergebnis angezeigt
+
     private TextView ergebnis;
+
+    // Die ImageView zeigt je nach Anzahl der Würfel ein anderes Würfelbild an,
+    // das beim Würfelvorgang animiert wird
+
     private ImageView wuerfel1, wuerfel2, wuerfel3, wuerfel4, wuerfel5;
+
+    // Der Button zeigt an wieviel Würfel gewürfelt werden und kann den 'Wurf' starten
+
     private Button button1, button2, button3, button4, button5;
+
+    // Werden für die Umsetzung unsrer Gestensteuerung benötigt
+
     private SensorManager sm_acc, sm_prox;
     private Sensor acc, prox;
     private long then2 = 0;
@@ -33,6 +45,8 @@ public class Wuerfeln extends AppCompatActivity implements SensorEventListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wuerfeln);
 
+        // hierdurch wird darauf hingewiesen das man per Geste zwischen der Anzahl
+        // der Würfeln wechseln kann
         Context context = getApplicationContext();
         CharSequence text = "Zum Navigieren Smartphone nach rechts oder links neigen";
         int duration = Toast.LENGTH_LONG;
@@ -40,11 +54,13 @@ public class Wuerfeln extends AppCompatActivity implements SensorEventListener {
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
 
+        // Erzeugen der SensorManager Instanzen und der Sensor Objekte
         sm_acc = (SensorManager) getSystemService(SENSOR_SERVICE);
         acc = sm_acc.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         sm_prox = (SensorManager) getSystemService(SENSOR_SERVICE);
         prox = sm_prox.getDefaultSensor(Sensor.TYPE_PROXIMITY);
 
+        //Zuweisen der Ressourcen IDs
         ergebnis = findViewById(R.id.ergebnisview);
 
         wuerfel1 = findViewById(R.id.wuerfel1);
@@ -59,6 +75,8 @@ public class Wuerfeln extends AppCompatActivity implements SensorEventListener {
         button4 = findViewById(R.id.button4);
         button5 = findViewById(R.id.button5);
 
+        // Startzustand ist, das 1 Würfel simuliert werden soll, somit wird die
+        // entsprechende ImageView und der zugehörige Button sichtbar gemacht
         button1.setVisibility(View.VISIBLE);
         button2.setVisibility(View.GONE);
         button3.setVisibility(View.GONE);
@@ -90,10 +108,13 @@ public class Wuerfeln extends AppCompatActivity implements SensorEventListener {
     }
 
     public void onSensorChanged(SensorEvent event) {
-        //Sensor s erhält die Sensodaten als Array-List
+
+        //Sensor s erhält die Sensordaten als Array-List
         Sensor s = event.sensor;
+
         //Falls Sensor s Daten vom Accelerometer enthält:
         if (s.getType() == Sensor.TYPE_ACCELEROMETER) {
+
             //Werte für X- und Y-Achse werden ausgelesen und in Ints gespeichert. "Z" wird nicht benötigt.
             int x = Math.round(event.values[0]);
             int y = Math.round(event.values[1]);
@@ -116,13 +137,13 @@ public class Wuerfeln extends AppCompatActivity implements SensorEventListener {
             }
         }
 
+        // Steuerung per Entfernungssensor, die je nach Counterwert und Switchcases
+        // die entsprechende Würfelmethode ausführt
         if (s.getType() == Sensor.TYPE_PROXIMITY) {
             float dist = event.values[0];
             if (dist == 0.0) {
                 switch (dicecounter) {
-                    case 1: wuerfeln1(null);
-
-                        break;
+                    case 1: wuerfeln1(null); break;
                     case 2: wuerfeln2(null); break;
                     case 3: wuerfeln3(null); break;
                     case 4: wuerfeln4(null); break;
@@ -130,11 +151,11 @@ public class Wuerfeln extends AppCompatActivity implements SensorEventListener {
                     default: break;
                 }
             }
-
-
         }
     }
 
+    // In der Methode wechsel() wird je nach Counterwert die Richtige ImageView und der
+    // zugehörige Button sichtbar gemacht
     public void wechsel() {
         if (counter > 5) {counter = 1;} //"6. Seite" --> 1. Seite
         if (counter < 1) {counter = 5;} //"0. Seite" --> 5. Seite
@@ -151,6 +172,7 @@ public class Wuerfeln extends AppCompatActivity implements SensorEventListener {
         wuerfel4.setVisibility(View.GONE);
         wuerfel5.setVisibility(View.GONE);
 
+        // bestimmen, welche ImageView und welcher Button aktuell angezeigt werden
         switch (counter) {
             case 1: button1.setVisibility(View.VISIBLE);
                 wuerfel1.setVisibility(View.VISIBLE);
@@ -176,8 +198,8 @@ public class Wuerfeln extends AppCompatActivity implements SensorEventListener {
         }
     }
 
-
-
+    // Methode, die entweder per Sensor oder onClick() des button1 ausgeführt wird,
+    // simuliert den Wurf eines einzelnen sechsseitigen Würfels
     public void wuerfeln1(View view){
         Random rand = new Random();
         int n = rand.nextInt(6) + 1;
@@ -191,18 +213,26 @@ public class Wuerfeln extends AppCompatActivity implements SensorEventListener {
             case 6: wurfergebnis = "6"; break;
             default:break;
         }
+
+        // Das zufallsgenerierte Wurfergebnis wird in TextView sichtbar gemacht
         ergebnis.setText(wurfergebnis);
 
+        // Animation wird initialisiert und bekommt per ID Ressource zugewiesen,
+        // danach wird die Animation an ImageView angewandt
         Animation animation = AnimationUtils.loadAnimation(
                 getApplicationContext(),R.anim.rotate
         );
         wuerfel1.startAnimation(animation);
     }
 
+    // Methode, die entweder per Sensor oder onClick() des button2 ausgeführt wird,
+    // simuliert den Wurf von 2 sechsseitigen Würfeln
     public void wuerfeln2(View view){
         Random rand = new Random();
         String wurfergebnis = "";
 
+        // For-Schleife, da der Switchcase je nach Würfelanzahl mehrmals hintereinander
+        // ausgeführt werden muss
         for(int i = 0; i<2; i++){
             int n = rand.nextInt(6) + 1;
             switch(n){
@@ -215,18 +245,26 @@ public class Wuerfeln extends AppCompatActivity implements SensorEventListener {
                 default:break;
             }
         }
+
+        // Das zufallsgenerierte Wurfergebnis wird in TextView sichtbar gemacht
         ergebnis.setText(wurfergebnis);
 
+        // Animation wird initialisiert und bekommt per ID Ressource zugewiesen,
+        // danach wird die Animation an ImageView angewandt
         Animation animation = AnimationUtils.loadAnimation(
                 getApplicationContext(),R.anim.rotate
         );
         wuerfel2.startAnimation(animation);
     }
 
+    // Methode, die entweder per Sensor oder onClick() des button3 ausgeführt wird,
+    // simuliert den Wurf von 3 sechsseitigen Würfeln
     public void wuerfeln3(View view) {
         Random rand = new Random();
         String wurfergebnis = "";
 
+        // For-Schleife, da der Switchcase je nach Würfelanzahl mehrmals hintereinander
+        // ausgeführt werden muss
         for(int i = 0; i<3; i++){
             int n = rand.nextInt(6) + 1;
             switch(n){
@@ -239,8 +277,12 @@ public class Wuerfeln extends AppCompatActivity implements SensorEventListener {
                 default:break;
             }
         }
+
+        // Das zufallsgenerierte Wurfergebnis wird in TextView sichtbar gemacht
         ergebnis.setText(wurfergebnis);
 
+        // Animation wird initialisiert und bekommt per ID Ressource zugewiesen,
+        // danach wird die Animation an ImageView angewandt
         Animation animation = AnimationUtils.loadAnimation(
                 getApplicationContext(),R.anim.rotate
         );
@@ -248,10 +290,14 @@ public class Wuerfeln extends AppCompatActivity implements SensorEventListener {
 
     }
 
+    // Methode, die entweder per Sensor oder onClick() des button4 ausgeführt wird,
+    // simuliert den Wurf von 4 sechsseitigen Würfeln
     public void wuerfeln4(View view) {
         Random rand = new Random();
         String wurfergebnis = "";
 
+        // For-Schleife, da der Switchcase je nach Würfelanzahl mehrmals hintereinander
+        // ausgeführt werden muss
         for(int i = 0; i<4; i++){
             int n = rand.nextInt(6) + 1;
             switch(n){
@@ -264,18 +310,26 @@ public class Wuerfeln extends AppCompatActivity implements SensorEventListener {
                 default:break;
             }
         }
+
+        // Das zufallsgenerierte Wurfergebnis wird in TextView sichtbar gemacht
         ergebnis.setText(wurfergebnis);
 
+        // Animation wird initialisiert und bekommt per ID Ressource zugewiesen,
+        // danach wird die Animation an ImageView angewandt
         Animation animation = AnimationUtils.loadAnimation(
                 getApplicationContext(),R.anim.rotate
         );
         wuerfel4.startAnimation(animation);
     }
 
+    // Methode, die entweder per Sensor oder onClick() des button5 ausgeführt wird,
+    // simuliert den Wurf von 5 sechsseitigen Würfeln
     public void wuerfeln5(View view) {
         Random rand = new Random();
         String wurfergebnis = "";
 
+        // For-Schleife, da der Switchcase je nach Würfelanzahl mehrmals hintereinander
+        // ausgeführt werden muss
         for(int i = 0; i<5; i++){
             int n = rand.nextInt(6) + 1;
             switch(n){
@@ -288,44 +342,15 @@ public class Wuerfeln extends AppCompatActivity implements SensorEventListener {
                 default:break;
             }
         }
+
+        // Das zufallsgenerierte Wurfergebnis wird in TextView sichtbar gemacht
         ergebnis.setText(wurfergebnis);
 
+        // Animation wird initialisiert und bekommt per ID Ressource zugewiesen,
+        // danach wird die Animation an ImageView angewandt
         Animation animation = AnimationUtils.loadAnimation(
                 getApplicationContext(),R.anim.rotate
         );
         wuerfel5.startAnimation(animation);
-
     }
-
-    /*public void wuerfeln16(View view){
-        Random rand = new Random();
-        String wurfergebnis = "";
-        int n = rand.nextInt(6) + 1;
-        switch (n) {
-            case 1: wurfergebnis = wurfergebnis + "1 ";break;
-            case 2: wurfergebnis = wurfergebnis + "2 ";break;
-            case 3: wurfergebnis = wurfergebnis + "3 ";break;
-            case 4: wurfergebnis = wurfergebnis + "4 ";break;
-            case 5: wurfergebnis = wurfergebnis + "5 ";break;
-            case 6: wurfergebnis = wurfergebnis + "6 ";break;
-            case 7: wurfergebnis = wurfergebnis + "7 ";break;
-            case 8: wurfergebnis = wurfergebnis + "8 ";break;
-            case 9: wurfergebnis = wurfergebnis + "9 ";break;
-            case 10: wurfergebnis = wurfergebnis + "10 ";break;
-            case 11: wurfergebnis = wurfergebnis + "11 ";break;
-            case 12: wurfergebnis = wurfergebnis + "12 ";break;
-            case 13: wurfergebnis = wurfergebnis + "13 ";break;
-            case 14: wurfergebnis = wurfergebnis + "14 ";break;
-            case 15: wurfergebnis = wurfergebnis + "15 ";break;
-            case 16: wurfergebnis = wurfergebnis + "16 ";break;
-            default: break;
-        }
-        ergebnis.setText(wurfergebnis);
-
-        Animation animation = AnimationUtils.loadAnimation(
-                getApplicationContext(),R.anim.rotate
-        );
-        wuerfel.startAnimation(animation);
-    }*/
-
 }

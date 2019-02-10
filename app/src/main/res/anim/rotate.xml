@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <set xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- to Degrees -> wird um 360° gedreht -->
+    <!-- pivotX & pivotY -> hier wird die ImageView Mitte als Drehachsenpunkt festgelegt -->
+    <!-- duration -> hier wird die Dauer festgelegt, die Animation braucht um einmal durchgeführt zu werden  -->
+    <!-- repeatMode & repeatCount -> wenn repeatCount größer als 0 wäre, würde Animation der Anzahl entsprechend mehrmals ausgfeührt werden -->
     <rotate android:fromDegrees="0"
         android:toDegrees="360"
         android:pivotX = "50%"
         android:pivotY = "50%"
         android:duration = "800"
         android:repeatMode = "restart"
-        android:repeatCount = "0"/>
+        android:repeatCount = "0" />
 </set>
