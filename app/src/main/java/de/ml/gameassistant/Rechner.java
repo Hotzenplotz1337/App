@@ -40,7 +40,7 @@ public class Rechner extends AppCompatActivity implements SensorEventListener {
 
     // Durch den Bool eingabeZ wird verhindert, das Eingaben getätigt werden, die zu dem aktuellen Zeitpunkt
     // nicht sinnvoll sind (z.B. Rechner erwartet nächsten Operator, jedoch wird eine Zahl eingetippt)
-    private Boolean eingabeZ = true;
+    private Boolean eingabeZ = true, eingabeK = true;
 
     // AKTUELLE_OPERATION bekommt je nach Tastendruck die entsprechenede Rechenoperation zugewiesen
     // und wird bei '=' zurückgesetzt
@@ -171,8 +171,9 @@ public class Rechner extends AppCompatActivity implements SensorEventListener {
 
     }
     public void pressKomma(View view){
-        if(eingabeZ){
+        if(eingabeZ && eingabeK){
             eingabe.setText(eingabe.getText() + ".");
+            eingabeK = false;
         }
     }
 
@@ -191,6 +192,7 @@ public class Rechner extends AppCompatActivity implements SensorEventListener {
                 bMinus.setEnabled(true);
                 bMal.setEnabled(true);
                 bGeteilt.setEnabled(true);
+                eingabeK = true;
             }
             else if(AKTUELLE_OPERATION == SUBTRAKTION) {
                 zahl2 = Double.parseDouble(eingabe.getText().toString());
@@ -199,6 +201,7 @@ public class Rechner extends AppCompatActivity implements SensorEventListener {
                 bMinus.setEnabled(true);
                 bMal.setEnabled(true);
                 bGeteilt.setEnabled(true);
+                eingabeK = true;
             }
             else if(AKTUELLE_OPERATION == MULTIPLIKATION){
                 zahl2 = Double.parseDouble(eingabe.getText().toString());
@@ -207,6 +210,7 @@ public class Rechner extends AppCompatActivity implements SensorEventListener {
                 bMinus.setEnabled(true);
                 bMal.setEnabled(true);
                 bGeteilt.setEnabled(true);
+                eingabeK = true;
             }
             else if(AKTUELLE_OPERATION == DIVISION) {
                 zahl2 = Double.parseDouble(eingabe.getText().toString());
@@ -215,6 +219,7 @@ public class Rechner extends AppCompatActivity implements SensorEventListener {
                 bMinus.setEnabled(true);
                 bMal.setEnabled(true);
                 bGeteilt.setEnabled(true);
+                eingabeK = true;
             }
         }
         else {
@@ -294,6 +299,7 @@ public class Rechner extends AppCompatActivity implements SensorEventListener {
         zahl1 = Double.NaN;
         anzeige.setText(null);
         eingabe.setText(null);
+        eingabeK = true;
         eingabeZ = true;
         bPlus.setEnabled(true);
         bMinus.setEnabled(true);
