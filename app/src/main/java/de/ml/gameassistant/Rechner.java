@@ -1,14 +1,21 @@
 package de.ml.gameassistant;
 
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.text.DecimalFormat;
 
-public class Rechner extends AppCompatActivity {
+public class Rechner extends AppCompatActivity implements SensorEventListener {
 
     // Tasten des Rechners
     private Button b1, b2, b3, b4, b5, b6, b7, b8, b9, b0, bPlus, bMinus, bMal, bGeteilt, bKomma, bGleich;
@@ -35,6 +42,10 @@ public class Rechner extends AppCompatActivity {
     // und wird bei '=' zurückgesetzt
     private char AKTUELLE_OPERATION;
 
+    // Für den reset des Rechners benötigt
+    private SensorManager sm_prox;
+    private Sensor prox;
+
     //zur Festlegung der Formatierung der Anzeigezahl
     DecimalFormat decimalFormat = new DecimalFormat("#.##########");
 
@@ -42,6 +53,14 @@ public class Rechner extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rechner);
+
+        // hierdurch wird darauf hingewiesen, dass man per Entfernunssensor den Rechner
+        // zurücksetzen kann
+        Context context = getApplicationContext();
+        CharSequence text = "Für das Zurücksetzen die Hand über den Entfernungssensor halten.";
+        int duration = Toast.LENGTH_LONG;
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
 
         // Zuweisen der Ressourcen IDs
         b1 = findViewById(R.id.b1);
@@ -62,6 +81,34 @@ public class Rechner extends AppCompatActivity {
         bGleich = findViewById(R.id.bGleich);
         anzeige = findViewById(R.id.anzeige);
         eingabe = findViewById(R.id.eingabe);
+        sm_prox = (SensorManager) getSystemService(SENSOR_SERVICE);
+        prox = sm_prox.getDefaultSensor(Sensor.TYPE_PROXIMITY);
+    }
+
+    protected void onResume() {
+        super.onResume();
+        //Sensor-Listener werden gestartet (aktiv, wenn App aktiv ist)
+        sm_prox.registerListener(this, prox, SensorManager.SENSOR_DELAY_UI);
+    }
+
+    protected void onPause() {
+        super.onPause();
+        //Sensor-Listener werden gestoppt (wenn App geschlossen oder pausiert wird)
+        sm_prox.unregisterListener(this);
+    }
+
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+    }
+
+    public void onSensorChanged(SensorEvent event) {
+        //Sensor s erhält die Sensordaten als Array-List
+        Sensor s = event.sensor;
+
+
+        float dist = event.values[0];
+        if (dist == 0.0) {
+                reset();
+        }
     }
 
     // Einzelne Methoden, die bei Klick der Zahlen '0-9' & '.' ausgeführt werden
@@ -172,6 +219,12 @@ public class Rechner extends AppCompatActivity {
         // im nächsten Rechenschritt zugeordnet werden kann
         zahl1 = Double.NaN;
         AKTUELLE_OPERATION = '0';
+    }
+
+    public void reset(){
+        zahl1 = Double.NaN;
+        anzeige.setText(null);
+        eingabe.setText(null);
     }
 
 }
