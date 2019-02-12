@@ -38,6 +38,8 @@ public class Rechner extends AppCompatActivity implements SensorEventListener {
     private static final char MULTIPLIKATION = '*';
     private static final char DIVISION = '/';
 
+    private Boolean eingabeZ = true;
+
     // AKTUELLE_OPERATION bekommt je nach Tastendruck die entsprechenede Rechenoperation zugewiesen
     // und wird bei '=' zurückgesetzt
     private char AKTUELLE_OPERATION;
@@ -113,38 +115,63 @@ public class Rechner extends AppCompatActivity implements SensorEventListener {
 
     // Einzelne Methoden, die bei Klick der Zahlen '0-9' & '.' ausgeführt werden
     // und diese im Eingabefeld anzeigen
+
     public void press1(View view){
-        eingabe.setText(eingabe.getText() + "1");
+        if(eingabeZ) {
+            eingabe.setText(eingabe.getText() + "1");
+        }
+
     }
     public void press2(View view){
-        eingabe.setText(eingabe.getText() + "2");
+        if(eingabeZ){
+            eingabe.setText(eingabe.getText() + "2");
+        }
+
     }
     public void press3(View view){
-        eingabe.setText(eingabe.getText() + "3");
+        if(eingabeZ){
+            eingabe.setText(eingabe.getText() + "3");
+        }
     }
     public void press4(View view){
-        eingabe.setText(eingabe.getText() + "4");
+        if(eingabeZ){
+            eingabe.setText(eingabe.getText() + "4");
+        }
     }
     public void press5(View view){
-        eingabe.setText(eingabe.getText() + "5");
+        if(eingabeZ){
+            eingabe.setText(eingabe.getText() + "5");
+        }
     }
     public void press6(View view){
-        eingabe.setText(eingabe.getText() + "6");
+        if(eingabeZ){
+            eingabe.setText(eingabe.getText() + "6");
+        }
     }
     public void press7(View view){
-        eingabe.setText(eingabe.getText() + "7");
+        if(eingabeZ){
+            eingabe.setText(eingabe.getText() + "7");
+        }
     }
     public void press8(View view){
-        eingabe.setText(eingabe.getText() + "8");
+        if(eingabeZ){
+            eingabe.setText(eingabe.getText() + "8");
+        }
     }
     public void press9(View view){
+        if(eingabeZ)
         eingabe.setText(eingabe.getText() + "9");
     }
     public void press0(View view){
-        eingabe.setText(eingabe.getText() + "0");
+        if(eingabeZ){
+            eingabe.setText(eingabe.getText() + "0");
+        }
+
     }
     public void pressKomma(View view){
-        eingabe.setText(eingabe.getText() + ".");
+        if(eingabeZ){
+            eingabe.setText(eingabe.getText() + ".");
+        }
     }
 
     // in der Rechne() Methode wird entweder zahl1 zugewiesen und keine Rechenoperation ausgeführt
@@ -155,23 +182,40 @@ public class Rechner extends AppCompatActivity implements SensorEventListener {
             if(AKTUELLE_OPERATION == ADDITION) {
                 zahl2 = Double.parseDouble(eingabe.getText().toString());
                 zahl1 += zahl2;
+                bPlus.setEnabled(true);
+                bMinus.setEnabled(true);
+                bMal.setEnabled(true);
+                bGeteilt.setEnabled(true);
             }
             else if(AKTUELLE_OPERATION == SUBTRAKTION) {
                 zahl2 = Double.parseDouble(eingabe.getText().toString());
                 zahl1 -= zahl2;
+                bPlus.setEnabled(true);
+                bMinus.setEnabled(true);
+                bMal.setEnabled(true);
+                bGeteilt.setEnabled(true);
             }
             else if(AKTUELLE_OPERATION == MULTIPLIKATION){
                 zahl2 = Double.parseDouble(eingabe.getText().toString());
                 zahl1 *= zahl2;
+                bPlus.setEnabled(true);
+                bMinus.setEnabled(true);
+                bMal.setEnabled(true);
+                bGeteilt.setEnabled(true);
             }
             else if(AKTUELLE_OPERATION == DIVISION) {
                 zahl2 = Double.parseDouble(eingabe.getText().toString());
                 zahl1 /= zahl2;
+                bPlus.setEnabled(true);
+                bMinus.setEnabled(true);
+                bMal.setEnabled(true);
+                bGeteilt.setEnabled(true);
             }
         }
         else {
             try {
                 zahl1 = Double.parseDouble(eingabe.getText().toString());
+                eingabeZ = true;
             }
             catch (Exception e){}
         }
@@ -187,25 +231,40 @@ public class Rechner extends AppCompatActivity implements SensorEventListener {
         AKTUELLE_OPERATION = ADDITION;
         Rechne();
         anzeige.setText(decimalFormat.format(zahl1));
+        bPlus.setEnabled(false);
+        bMinus.setEnabled(false);
+        bMal.setEnabled(false);
+        bGeteilt.setEnabled(false);
     }
-
 
     public void pressMinus(View view) {
         AKTUELLE_OPERATION = SUBTRAKTION;
         Rechne();
         anzeige.setText(decimalFormat.format(zahl1));
+        bPlus.setEnabled(false);
+        bMinus.setEnabled(false);
+        bMal.setEnabled(false);
+        bGeteilt.setEnabled(false);
     }
 
     public void pressMal(View view) {
         AKTUELLE_OPERATION = MULTIPLIKATION;
         Rechne();
         anzeige.setText(decimalFormat.format(zahl1));
+        bPlus.setEnabled(false);
+        bMinus.setEnabled(false);
+        bMal.setEnabled(false);
+        bGeteilt.setEnabled(false);
     }
 
     public void pressGeteilt(View view) {
         AKTUELLE_OPERATION = DIVISION;
         Rechne();
         anzeige.setText(decimalFormat.format(zahl1));
+        bPlus.setEnabled(false);
+        bMinus.setEnabled(false);
+        bMal.setEnabled(false);
+        bGeteilt.setEnabled(false);
     }
 
     public void pressGleich(View view) {
@@ -219,6 +278,7 @@ public class Rechner extends AppCompatActivity implements SensorEventListener {
         // im nächsten Rechenschritt zugeordnet werden kann
         zahl1 = Double.NaN;
         AKTUELLE_OPERATION = '0';
+        eingabeZ = false;
     }
 
     public void reset(){
