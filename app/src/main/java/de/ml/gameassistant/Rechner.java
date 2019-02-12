@@ -225,6 +225,10 @@ public class Rechner extends AppCompatActivity implements SensorEventListener {
             catch (Exception e){}
         }
         eingabe.setText(null);
+        bPlus.setEnabled(true);
+        bMinus.setEnabled(true);
+        bMal.setEnabled(true);
+        bGeteilt.setEnabled(true);
     }
 
     // Methoden der einzelnen Operatoren, AKTUELLE_OPERATION bekommt je nach Operator Konstante
@@ -233,43 +237,43 @@ public class Rechner extends AppCompatActivity implements SensorEventListener {
     // und keine Rechenoperation ausgeführt wird oder mittels Abgleich AKTUELLE_OPERATION
     // die gewünschte Rechenperation ausgeführt
     public void pressPlus(View view) {
+        bPlus.setEnabled(false);
+        bMinus.setEnabled(false);
+        bMal.setEnabled(false);
+        bGeteilt.setEnabled(false);
         AKTUELLE_OPERATION = ADDITION;
         Rechne();
         anzeige.setText(decimalFormat.format(zahl1));
-        bPlus.setEnabled(false);
-        bMinus.setEnabled(false);
-        bMal.setEnabled(false);
-        bGeteilt.setEnabled(false);
     }
 
     public void pressMinus(View view) {
+        bPlus.setEnabled(false);
+        bMinus.setEnabled(false);
+        bMal.setEnabled(false);
+        bGeteilt.setEnabled(false);
         AKTUELLE_OPERATION = SUBTRAKTION;
         Rechne();
         anzeige.setText(decimalFormat.format(zahl1));
-        bPlus.setEnabled(false);
-        bMinus.setEnabled(false);
-        bMal.setEnabled(false);
-        bGeteilt.setEnabled(false);
     }
 
     public void pressMal(View view) {
-        AKTUELLE_OPERATION = MULTIPLIKATION;
-        Rechne();
-        anzeige.setText(decimalFormat.format(zahl1));
         bPlus.setEnabled(false);
         bMinus.setEnabled(false);
         bMal.setEnabled(false);
         bGeteilt.setEnabled(false);
+        AKTUELLE_OPERATION = MULTIPLIKATION;
+        Rechne();
+        anzeige.setText(decimalFormat.format(zahl1));
     }
 
     public void pressGeteilt(View view) {
         AKTUELLE_OPERATION = DIVISION;
-        Rechne();
-        anzeige.setText(decimalFormat.format(zahl1));
         bPlus.setEnabled(false);
         bMinus.setEnabled(false);
         bMal.setEnabled(false);
         bGeteilt.setEnabled(false);
+        Rechne();
+        anzeige.setText(decimalFormat.format(zahl1));
     }
 
     public void pressGleich(View view) {
@@ -290,6 +294,11 @@ public class Rechner extends AppCompatActivity implements SensorEventListener {
         zahl1 = Double.NaN;
         anzeige.setText(null);
         eingabe.setText(null);
+        eingabeZ = true;
+        bPlus.setEnabled(true);
+        bMinus.setEnabled(true);
+        bMal.setEnabled(true);
+        bGeteilt.setEnabled(true);
     }
 
 }
