@@ -38,6 +38,8 @@ public class Rechner extends AppCompatActivity implements SensorEventListener {
     private static final char MULTIPLIKATION = '*';
     private static final char DIVISION = '/';
 
+    // Durch den Bool eingabeZ wird verhindert, das Eingaben getätigt werden, die zu dem aktuellen Zeitpunkt
+    // nicht sinnvoll sind (z.B. Rechner erwartet nächsten Operator, jedoch wird eine Zahl eingetippt)
     private Boolean eingabeZ = true;
 
     // AKTUELLE_OPERATION bekommt je nach Tastendruck die entsprechenede Rechenoperation zugewiesen
@@ -177,6 +179,9 @@ public class Rechner extends AppCompatActivity implements SensorEventListener {
     // in der Rechne() Methode wird entweder zahl1 zugewiesen und keine Rechenoperation ausgeführt
     // oder mittels Abgleich von AKTUELLE_OPERATION die gewünschte Rechenperation ausgeführt, zudem
     // wird das Eingabefeld gelöscht für den nächsten Techenschritt
+    // Zudem muss durch setEnable() dafür gesorgt werden, das die Operatoren Buttons nicht mehrmals gedrückt
+    // werden und somit zu Problemen führen, bei einmaligem Tippen des Operators wird dieser solange gesperrt,
+    // bis die nächste Zahl eingetippt und ereneut ein Operator getätigt wird
     private void Rechne(){
         if(!Double.isNaN(zahl1)) {
             if(AKTUELLE_OPERATION == ADDITION) {
