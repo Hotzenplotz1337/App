@@ -24,8 +24,7 @@ public class Rechner extends AppCompatActivity implements SensorEventListener {
     // Eingabe bzw Zwischenergebnis und Endergebnis angezeigt,
     // auf dem Eingabefeld wird nach tippen einer Taste diese dort angezeigt,
     // außerdem wird sie bei einem '=' als Zwischensepicher verwendet
-    private TextView anzeige;
-    private EditText eingabe;
+    private TextView anzeige, eingabe;
 
     // Zahlen mit denen gerechnet wird, zahl1 fungiert auch gleichzeitig als Zwischenergebnis
     // zahl1 = Double.NaN wird verwendet, um am Anfang die erste Eingabe direkt zahl1 zuzuweisen
@@ -51,7 +50,7 @@ public class Rechner extends AppCompatActivity implements SensorEventListener {
     private Sensor prox;
 
     //zur Festlegung der Formatierung der Anzeigezahl
-    DecimalFormat decimalFormat = new DecimalFormat("#.##########");
+    DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
