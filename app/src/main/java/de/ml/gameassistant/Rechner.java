@@ -1,3 +1,22 @@
+// Programmiert von: Mark Linke
+// Quellen:     - https://www.androidauthority.com/build-a-calculator-app-721910/
+//              - Android Documenmtation (double(NaN), DecimalFormat, DecimalFormatSymbols & Buttons(setEnabled))
+// Die erste Quelle, also das Tutorial einen Taschenerechner zu erstellen, wurde lediglich
+// verwendet, um den ersten Ansatz zu finden wie ein Taschenrechner umsetzbar ist.
+// Mein erster komplett eigener Versuch funktionierte nicht weswegen ich mir erst einmal Anregung holte,
+// wie mein geplanter Rechner umsetzbar sei.
+// Die Funktionsweise meines progammierten Rechners wurde grundlegend abgeändert und erweitert,
+// nur die Grundidee wie ein Rechner umgesetz werden kann wurde übernommen.
+// Im Tutorial wurde hingegen ein Rechner bereitgestellt, der nur eine einzelne Rechenoperation ausführen kann
+// und danach neu gestartet werden muss um erneut rechnen zu können.
+// Mein Rechner jedoch kann mit dem letzten (Zwischen)Ergebnis endlos(sofern Datentyp das zulässt) weiter rechnen, zudem
+// wird gesteuert das keine Fehleingaben passieren können, wie z.B. das mehrmals der gleiche Rechenoperator ohne
+// weitere Zahleneingabe möglich ist.
+// Außerdem kann der Rechner durch den Abstandssensor zurückgesetzt werden, was einen Neustart der Activity überflüssig
+// macht. (Zum Zeitpunkt der Videoaufnahme war diese Funktion noch nicht implementiert)
+
+
+
 package de.ml.gameassistant;
 
 import android.content.Context;
@@ -9,13 +28,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 
-public class Rechner extends AppCompatActivity implements SensorEventListener {
+public class Rechner extends AppCompatActivity implements SensorEventListener  {
 
     // Tasten des Rechners
     private Button b1, b2, b3, b4, b5, b6, b7, b8, b9, b0, bPlus, bMinus, bMal, bGeteilt, bKomma, bGleich;
@@ -48,9 +67,6 @@ public class Rechner extends AppCompatActivity implements SensorEventListener {
     // Für den reset des Rechners benötigt
     private SensorManager sm_prox;
     private Sensor prox;
-
-    //zur Festlegung der Formatierung der Anzeigezahl
-    DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +128,14 @@ public class Rechner extends AppCompatActivity implements SensorEventListener {
         if (dist == 0.0) {
                 reset();
         }
+    }
+
+    // Wird zum Formatieren der Eingabe benötigt, es wird festgelegt wieviel Komastellen angezeig werden und zusätzlich
+    // das nicht länderspezifisch das Komma an Stelle des Punktes bei Übergabe verwendet wird
+    public static String format(double eingabe1) {
+        DecimalFormatSymbols decimalSymbols = DecimalFormatSymbols.getInstance();
+        decimalSymbols.setDecimalSeparator('.');
+        return new DecimalFormat("#.##", decimalSymbols).format(eingabe1);
     }
 
     // Einzelne Methoden, die bei Klick der Zahlen '0-9' & '.' ausgeführt werden
@@ -229,10 +253,6 @@ public class Rechner extends AppCompatActivity implements SensorEventListener {
             catch (Exception e){}
         }
         eingabe.setText(null);
-        bPlus.setEnabled(true);
-        bMinus.setEnabled(true);
-        bMal.setEnabled(true);
-        bGeteilt.setEnabled(true);
     }
 
     // Methoden der einzelnen Operatoren, AKTUELLE_OPERATION bekommt je nach Operator Konstante
@@ -247,7 +267,7 @@ public class Rechner extends AppCompatActivity implements SensorEventListener {
         bGeteilt.setEnabled(false);
         AKTUELLE_OPERATION = ADDITION;
         Rechne();
-        anzeige.setText(decimalFormat.format(zahl1));
+        anzeige.setText(format(zahl1));
     }
 
     public void pressMinus(View view) {
@@ -257,7 +277,7 @@ public class Rechner extends AppCompatActivity implements SensorEventListener {
         bGeteilt.setEnabled(false);
         AKTUELLE_OPERATION = SUBTRAKTION;
         Rechne();
-        anzeige.setText(decimalFormat.format(zahl1));
+        anzeige.setText(format(zahl1));
     }
 
     public void pressMal(View view) {
@@ -267,7 +287,7 @@ public class Rechner extends AppCompatActivity implements SensorEventListener {
         bGeteilt.setEnabled(false);
         AKTUELLE_OPERATION = MULTIPLIKATION;
         Rechne();
-        anzeige.setText(decimalFormat.format(zahl1));
+        anzeige.setText(format(zahl1));
     }
 
     public void pressGeteilt(View view) {
@@ -277,15 +297,15 @@ public class Rechner extends AppCompatActivity implements SensorEventListener {
         bMal.setEnabled(false);
         bGeteilt.setEnabled(false);
         Rechne();
-        anzeige.setText(decimalFormat.format(zahl1));
+        anzeige.setText(format(zahl1));
     }
 
     public void pressGleich(View view) {
         Rechne();
-        anzeige.setText(decimalFormat.format(zahl1));
+        anzeige.setText(format(zahl1));
 
         // Ergebnis wird in Eingabe Zwischengespeichert
-        eingabe.setText(decimalFormat.format(zahl1));
+        eingabe.setText(format(zahl1));
 
         // zahl1 muss zurückgesetzt werden, damit das Zwischenergebnis ereneut zahl1
         // im nächsten Rechenschritt zugeordnet werden kann

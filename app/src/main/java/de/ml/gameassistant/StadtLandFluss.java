@@ -1,3 +1,5 @@
+// Programmiert von: Fabian Hastenpflug
+
 package de.ml.gameassistant;
 
 import android.hardware.Sensor;

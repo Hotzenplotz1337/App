@@ -1,3 +1,6 @@
+// Programmiert von: Mark Linke
+// Quellen: Andorid Documentation (für rotate.xml & Animation)
+
 package de.ml.gameassistant;
 
 import android.content.Context;
